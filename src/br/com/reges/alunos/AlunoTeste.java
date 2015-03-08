@@ -62,7 +62,19 @@ public class AlunoTeste {
 			//Ã‰ do tipo AlunoDeGraduacaoSemTrabalho
 		}
 		
-	
+		//Teste da função do exercício
+		//Cria alunos: teste1 e teste2
+		AlunoDeGraduacao teste1 = new AlunoDeGraduacao("Teste", "1");
+		Aluno teste2 = new Aluno("Teste", "2");
+		
+		//Cria teste3 : polimorfico
+		Aluno teste3 = teste2; 
+		System.out.println(ImprimeNomeCompleto(teste3));
+		
+		//Usa um cast para passar o teste1 (AlunoDeGraduacao) para teste3
+		teste3 = (Aluno) teste1;
+		System.out.println(ImprimeNomeCompleto(teste3));
+		
 	}
 
 	/**
@@ -77,6 +89,19 @@ public class AlunoTeste {
 		mensagem.append("Caro aluno ").append(aluno.nome)
 				.append(" seu resultado foi ").append(aluno.resultado());
 
+		return mensagem.toString();
+	}
+	
+	//Função do exercício
+	private static String ImprimeNomeCompleto(Aluno aluno){
+		StringBuilder mensagem = new StringBuilder();
+		
+		if(aluno instanceof Aluno){
+			mensagem.append("Nome completo do aluno: ").append(aluno.nome + " ").append(aluno.sobrenome);
+			if(aluno instanceof AlunoDeGraduacao)
+				mensagem.append(" - Nota Trabalho 2 Bim: ").append(((AlunoDeGraduacao) aluno).notaTrabalhoSegundoBimestre);
+		}
+			
 		return mensagem.toString();
 	}
 
